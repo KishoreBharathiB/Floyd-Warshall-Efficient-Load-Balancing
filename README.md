@@ -34,12 +34,6 @@ Key components include:
 - **Parallelization with OpenMP and MPI**:
     - The `Floyd_Warshall_OpenMP.c` file includes OpenMP multi-threading for **shared memory parallelism**.
     - The `Floyd_Warshall_MPI.c` also utilizes MPI to enable **distributed computing** for large-scale simulations.
-# Floyd-Warshall Algorithm Implementations with MPI and OpenMP
-
-This repository contains two implementations of the **Floyd-Warshall algorithm**:
-
-- **Floyd_Warshall_MPI.c**: An implementation using **MPI** (Message Passing Interface) for distributed computing.
-- **Floyd_Warshall_OpenMP.c**: An implementation using **OpenMP** (Open Multi-Processing) for shared memory parallelism.
 
 ## Requirements
 
@@ -57,12 +51,20 @@ This section describes how to compile and run both the **MPI** and **OpenMP** ve
 
 This implementation uses **MPI** to parallelize the Floyd-Warshall algorithm across multiple processes in a distributed system.
 
+
+
 #### Compilation:
 
-To compile the **MPI** version of the program, follow these steps:
+To compile the **MPI** version of the program, follow these steps (running it in 4 threads):
 
 ```bash
 mpicc -o floyd_warshall_mpi Floyd_Warshall_MPI.c
+mpirun -np 4 ./floyd_warshall_mpi 
+```
+### 2. Running `Floyd_Warshall_OpenMP.c` (OpenMP version)
+```bash
+gcc -fopenmp -o floyd_warshall_openmp Floyd_Warshall_OpenMP.c
+./floyd_warshall_openmp
 ```
 
 ## Performance Improvements
